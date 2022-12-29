@@ -1,3 +1,4 @@
+.github/               export-ignore
 .gitlab/               export-ignore
 tests/                 export-ignore
 .gitignore             export-ignore
