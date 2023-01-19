@@ -6,12 +6,18 @@ The format is based on [Keep a Changelog][keepachangelog] and this project adher
 
 ---
 
-## [v1.0.0](https://gitlab.com/LeTraceurSnork/russian-validators/-/compare/905c00d52eb9a65b5af902bef6ccdbaf7224a24c...v1.0.0)
+## [v1.0.1](https://github.com/LeTraceurSnork/russian-validators/releases/tag/v1.0.1)
+
+### Fixed
+
+- Описание пакета в `composer.json` переведено на русский язык
+
+## [v1.0.0](https://github.com/LeTraceurSnork/russian-validators/releases/tag/v1.0.0)
 
 ### Added
 
-- INN, KPP, OGRN/OGRNIP and SNILS validators and its tests
-- AbstractValidator class and its Interface to grant an ability to extend the functionality
+- Валидаторы ИНН, ОГРН/ОГРНИП, СНИЛС, КПП; все покрыты тестами
+- Класс AbstractValidator и его интерфейс для возможности расширения функциональности
 
 [keepachangelog]:https://keepachangelog.com/en/1.0.0/
 
