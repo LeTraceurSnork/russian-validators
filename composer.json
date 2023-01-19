@@ -1,6 +1,6 @@
 {
   "name": "letraceursnork/russian-validators",
-  "description": "A package containing various validators of Russian identifiers e.g. INN, SNILS, OGRN etc.",
+  "description": "Библиотека для валидации русских идентификаторов таких, как ИНН, СНИЛС, ОГРН/ОГРНИП и др.",
   "type": "library",
   "license": "MIT",
   "autoload": {
@@ -11,7 +11,7 @@
   },
   "authors": [
     {
-      "name": "letraceursnork",
+      "name": "LeTraceurSnork",
       "email": "le_traceur_snork@mail.ru"
     }
   ],
