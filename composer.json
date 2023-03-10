@@ -5,7 +5,11 @@
   "license": "MIT",
   "autoload": {
     "psr-4": {
-      "LTS\\RussianValidators\\": "src/",
+      "LTS\\RussianValidators\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
       "LTS\\RussianValidators\\Tests\\": "tests/"
     }
   },
