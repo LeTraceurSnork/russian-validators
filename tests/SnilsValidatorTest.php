@@ -6,6 +6,9 @@ namespace LTS\RussianValidators\Tests;
 
 use LTS\RussianValidators\SnilsValidator;
 
+/**
+ * @coversDefaultClass \LTS\RussianValidators\SnilsValidator
+ */
 class SnilsValidatorTest extends AbstractGeneralValidatorTest
 {
     /**

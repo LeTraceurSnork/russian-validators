@@ -6,6 +6,9 @@ namespace LTS\RussianValidators;
 
 use InvalidArgumentException;
 
+/**
+ * Abstract class that can validate a value matches a pattern
+ */
 abstract class AbstractValidator implements ValidatorInterface
 {
     /**

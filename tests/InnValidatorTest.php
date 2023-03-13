@@ -6,6 +6,9 @@ namespace LTS\RussianValidators\Tests;
 
 use LTS\RussianValidators\InnValidator;
 
+/**
+ * @coversDefaultClass \LTS\RussianValidators\InnValidator
+ */
 class InnValidatorTest extends AbstractGeneralValidatorTest
 {
     /**
