@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace LTS\RussianValidators;
 
+/**
+ * Allows to validate that a value matches a rule
+ */
 interface ValidatorInterface
 {
     /**

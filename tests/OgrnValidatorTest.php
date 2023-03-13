@@ -6,6 +6,9 @@ namespace LTS\RussianValidators\Tests;
 
 use LTS\RussianValidators\OgrnValidator;
 
+/**
+ * @coversDefaultClass \LTS\RussianValidators\OgrnValidator
+ */
 class OgrnValidatorTest extends AbstractGeneralValidatorTest
 {
     /**

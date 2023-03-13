@@ -6,6 +6,9 @@ namespace LTS\RussianValidators\Tests;
 
 use LTS\RussianValidators\KppValidator;
 
+/**
+ * @coversDefaultClass \LTS\RussianValidators\KppValidator
+ */
 class KppValidatorTest extends AbstractGeneralValidatorTest
 {
     /**

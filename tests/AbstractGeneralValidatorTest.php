@@ -8,6 +8,9 @@ use LTS\RussianValidators\AbstractValidator;
 use PHPUnit\Framework\TestCase;
 use stdClass;
 
+/**
+ * Class that sets general invalid data sets
+ */
 abstract class AbstractGeneralValidatorTest extends TestCase
 {
     /**
