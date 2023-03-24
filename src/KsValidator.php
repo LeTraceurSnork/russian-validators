@@ -15,6 +15,22 @@ class KsValidator extends AbstractValidator
     private const CONTROL_KEY_MULTIPLIERS = [7, 1, 3, 7, 1, 3, 7, 1, 3, 7, 1, 3, 7, 1, 3, 7, 1, 3, 7, 1, 3, 7, 1];
 
     /**
+     *
+     */
+    private const CLEARING_CURRENCY_CODES = [
+        'A' => 0,
+        'B' => 1,
+        'C' => 2,
+        'E' => 3,
+        'H' => 4,
+        'K' => 5,
+        'M' => 6,
+        'P' => 7,
+        'T' => 8,
+        'X' => 9,
+    ];
+
+    /**
      * KS correct length
      */
     public const CORRECT_LENGTH = 20;
@@ -57,6 +73,7 @@ class KsValidator extends AbstractValidator
         }
 
         $value = $this->stringify($value);
+        $value = $this->resolveClearingCurrencyCode($value);
 
         /**
          * KS must be 20-digit number
@@ -69,31 +86,42 @@ class KsValidator extends AbstractValidator
             return true;
         }
 
+        if (!$this->validateControlKey($value, $this->bik)) {
+            return $this->endOnInvalid();
+        }
+
         return true;
     }
 
     /**
-     * Checks if KS checknumber is correctly calculated from BIK
+     * @link https://normativ.kontur.ru/document?moduleId=1&documentId=24444
      *
-     * @param string $ks
      * @param string $bik
+     * @param string $ks
      *
      * @return bool
      */
-    private function validateCheckNumber(string $ks, string $bik): bool
+    private function validateControlKey(string $ks, string $bik): bool
     {
-        $control_key = $this->calculateControlKey($ks, $bik);
+        $rkc_num            = sprintf('0%1$s%2$s', $bik[4], $bik[5]);
+        $ks_with_rkc_digits = str_split($rkc_num . $ks);
+
+        $control_key = 0;
+        foreach ($ks_with_rkc_digits as $key => $digit) {
+            $control_key += $digit * self::CONTROL_KEY_MULTIPLIERS[$key] % 10;
+        }
+
+        return $control_key % 10 === 0;
     }
 
-    private function calculateControlKey(string $ks, string $bik): int
+    /**
+     * Resolves KS 6 digit if it has a valid letter
+     *
+     * @param string $value
+     *
+     * @return string
+     */
+    private function resolveClearingCurrencyCode(string $value): string
     {
-        $rkc_num        = sprintf('0%1$s%2$s', $this->bik[4], $this->bik[5]);
-        $chunked_digits = str_split($ks);
-
-        $calculated_checksum = 0;
-        foreach ($chunked_digits as $key => $digit) {
-            $calculated_checksum += $digit * self::CONTROL_KEY_MULTIPLIERS[$key] % 10;
-        }
-        $calculated_checknumber = ($calculated_checksum * 3) % 10;
     }
 }
