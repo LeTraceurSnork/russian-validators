@@ -6,6 +6,17 @@ The format is based on [Keep a Changelog][keepachangelog] and this project adher
 
 ---
 
+## [v1.1.0](https://github.com/LeTraceurSnork/russian-validators/releases/tag/v1.1.0)
+
+### Added
+
+- Представлены валидаторы БИК, КС и КС с учётом БИК, написаны соответствующие тесты
+
+### Fixed
+
+- Добавлены PHPDoc-блоки для классов (включая `@coversDefaultClass` для тестов)
+- Namespace тестов перемещён в секцию `autoload-dev` композера
+
 ## [v1.0.1](https://github.com/LeTraceurSnork/russian-validators/releases/tag/v1.0.1)
 
 ### Fixed
