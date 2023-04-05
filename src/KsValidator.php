@@ -15,7 +15,9 @@ class KsValidator extends AbstractValidator
     private const CONTROL_KEY_MULTIPLIERS = [7, 1, 3, 7, 1, 3, 7, 1, 3, 7, 1, 3, 7, 1, 3, 7, 1, 3, 7, 1, 3, 7, 1];
 
     /**
+     * If 6th digit is a letter, it should be replaced by following rules
      *
+     * @link https://normativ.kontur.ru/document?moduleId=1&documentId=24444
      */
     private const CLEARING_CURRENCY_CODES = [
         'A' => 0,
@@ -115,7 +117,7 @@ class KsValidator extends AbstractValidator
     }
 
     /**
-     * Resolves KS 6 digit if it has a valid letter
+     * Resolves KS's 6th digit if it has a valid letter
      *
      * @param string $value
      *
@@ -123,5 +125,10 @@ class KsValidator extends AbstractValidator
      */
     private function resolveClearingCurrencyCode(string $value): string
     {
+        if (array_key_exists($value[5], self::CLEARING_CURRENCY_CODES)) {
+            $value[5] = self::CLEARING_CURRENCY_CODES[$value[5]];
+        }
+
+        return $value;
     }
 }
