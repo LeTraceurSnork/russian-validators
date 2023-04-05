@@ -125,6 +125,10 @@ class KsValidator extends AbstractValidator
      */
     private function resolveClearingCurrencyCode(string $value): string
     {
+        if (!isset($value[5])) {
+            return $value;
+        }
+
         if (array_key_exists($value[5], self::CLEARING_CURRENCY_CODES)) {
             $value[5] = self::CLEARING_CURRENCY_CODES[$value[5]];
         }
