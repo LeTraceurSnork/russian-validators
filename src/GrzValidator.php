@@ -38,16 +38,16 @@ class GrzValidator extends AbstractValidator
 
         $value = $this->stringify($value);
 
-        $latin_pattern    = implode('', static::VALID_LATIN_CHARACTERS);
-        $cyrillic_pattern = implode('', static::VALID_CYRILLIC_CHARACTERS);
-        $letters_pattern  = $latin_pattern . $cyrillic_pattern;
+        $latin_characters    = implode('', static::VALID_LATIN_CHARACTERS);
+        $cyrillic_characters = implode('', static::VALID_CYRILLIC_CHARACTERS);
+        $valid_letters       = $latin_characters . $cyrillic_characters;
 
         switch (true) {
             /**
              * Group #1, type #1 + #1A
              */
             case preg_match(
-                sprintf('/^[%1$s]{1}(\d{3})[%1$s]{2}(\d{2,3}(RUS?)?)?$/u', $letters_pattern),
+                sprintf('/^[%1$s]{1}(\d{3})[%1$s]{2}(\d{2,3}(RUS?)?)?$/u', $valid_letters),
                 $value,
                 $matches
             ):
@@ -55,7 +55,7 @@ class GrzValidator extends AbstractValidator
                  * Group #1, type #1B
                  */
             case preg_match(
-                sprintf('/^[%1$s]{2}(\d{3})(\d{2,3}(RUS?)?)?$/u', $letters_pattern),
+                sprintf('/^[%1$s]{2}(\d{3})(\d{2,3}(RUS?)?)?$/u', $valid_letters),
                 $value,
                 $matches
             ):
@@ -63,7 +63,7 @@ class GrzValidator extends AbstractValidator
                  * Group #1, type #2 + 4A
                  */
             case preg_match(
-                sprintf('/^[%1$s]{2}(\d{4})(\d{2,3}(RUS?)?)?$/u', $letters_pattern),
+                sprintf('/^[%1$s]{2}(\d{4})(\d{2,3}(RUS?)?)?$/u', $valid_letters),
                 $value,
                 $matches
             ):
@@ -71,7 +71,7 @@ class GrzValidator extends AbstractValidator
                  * Group #1, type #3 + #4
                  */
             case preg_match(
-                sprintf('/^(\d{4})[%1$s]{2}(\d{2,3}(RUS?)?)?$/u', $letters_pattern),
+                sprintf('/^(\d{4})[%1$s]{2}(\d{2,3}(RUS?)?)?$/u', $valid_letters),
                 $value,
                 $matches
             ):
@@ -79,7 +79,7 @@ class GrzValidator extends AbstractValidator
                  * Group #1, type #4B
                  */
             case preg_match(
-                sprintf('/^[%1$s]{2}(\d{2})[%1$s]{2}(\d{2,3}(RUS?)?)?$/u', $letters_pattern),
+                sprintf('/^[%1$s]{2}(\d{2})[%1$s]{2}(\d{2,3}(RUS?)?)?$/u', $valid_letters),
                 $value,
                 $matches
             ):
